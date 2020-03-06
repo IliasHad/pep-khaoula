@@ -68,7 +68,7 @@ Kenitra</li>
     <Img fixed={data.footerImage.childImageSharp.fixed} alt="" style={{
         position: "absolute",
         bottom: "0",
-        right: "-196px",
+        right: "0",
         marginBottom: "-1rem"
 
     }} />

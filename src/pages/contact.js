@@ -5,8 +5,9 @@ import SEO from "../components/seo";
 
 function ContactPage() {
   return (
-    <Layout>
-      <SEO
+
+<>
+    <SEO
         keywords={[`gatsby`, `tailwind`, `react`, `tailwindcss`]}
         title="Contact"
       />
@@ -70,7 +71,7 @@ function ContactPage() {
           </button>
         </form>
       </section>
-    </Layout>
+    </>
   );
 }
 
