@@ -1,25 +1,72 @@
+import { graphql,StaticQuery } from "gatsby";
 import React from "react";
-
+import Img from "gatsby-image"
 function About() {
 
   return (
 
 
-<div className="container mx-auto">
+<div className="container mx-auto ">
+<div className="flex flex-no-wrap  flex-1  mx-auto  py-10 w-full justify-center">
+
+<div className="w-full rounded">
+<div className="font-bold text-center text-2xl">About Us</div>
+
+</div>
+</div>
 <div className="flex flex-1  mx-auto  py-8 w-full">
 
 
 <div>
+<StaticQuery
+  query={graphql`
+  {
+    about: file(relativePath: {eq: "about.jpg"}) {
+      childImageSharp {
+        fixed(width: 600, quality: 100, cropFocus: CENTER,  fit: COVER) {
+          ...GatsbyImageSharpFixed
+        
+        }
+      }
+    }}`}
+    render={data => {
 
-<img className="" style={{width: "50vw"}}src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80" alt="" />
+      return (
+
+        <Img fixed={data.about.childImageSharp.fixed} alt="" 	/>
+
+      )
+    }}
+
+    />
 
 </div>
 
 <div className="px-10">
-<h2>Test Demo</h2>
- <a href="#" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:text-indigo-600 hover:bg-indigo-50 focus:outline-none focus:shadow-outline focus:border-indigo-300 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+<div className="font-bold text-lg">About Us</div>
+
+<p className="my-5 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-lg lg:mx-0">
+            We’re plant nursery for more than 20 years and we accumalet a lot of experience and skills
+
+</p>
+<div className="flex flex-no-wrap  flex-1  mx-auto  py-5 w-full ">
+
+<div className="max-w-sm rounded">
+<a href="#" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:text-indigo-600 hover:bg-indigo-50 focus:outline-none focus:shadow-outline focus:border-indigo-300 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
                     Live demo
                   </a>
+
+                
+
+  </div>
+  <div className="max-w-sm rounded mx-3">
+
+  <a href="#" className="w-full  flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+                    Get started
+                  </a>
+                
+  </div>
+</div>
 </div>
 </div>
 

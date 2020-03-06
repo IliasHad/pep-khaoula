@@ -12,16 +12,25 @@ function IndexPage() {
         keywords={[`gatsby`, `tailwind`, `react`, `tailwindcss`]}
         title="Home"
       />
-
-      <section className="text-center">
+      <section className="m-10">
        <ProductCards />
       </section>
 
-      <section>
+      <section className="m-10">
 <About />
       </section>
     </Layout>
   );
 }
+export const query = graphql`
+  query HomePageQuery {
+    site {
+      siteMetadata {
+        description
+      }
+    }
 
+    
+  }
+`
 export default IndexPage;

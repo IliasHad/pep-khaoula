@@ -1,21 +1,24 @@
+const path = require(`path`)
+
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Starter Tailwind`,
-    description: `Gatsby starter styled with Tailwind`,
+    description: `Gatsby starter styled with Tailwind with Plant.js`,
     author: `@taylorbryant`
   },
   plugins: [
-    "gatsby-plugin-eslint",
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/images`,
+        path: path.join(__dirname, `src`, `images`),
         name: 'images'
       }
     },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
+    `gatsby-plugin-react-helmet`,
+   
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
