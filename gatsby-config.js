@@ -1,4 +1,5 @@
 const path = require(`path`)
+require('dotenv').config()
 
 
 module.exports = {
@@ -48,6 +49,17 @@ module.exports = {
         purgeOnly: [`src/css/style.css`]
       }
     },
-    `gatsby-plugin-offline`
+    `gatsby-plugin-offline`,
+    {
+    resolve: `gatsby-source-strapi`,
+    options: {
+      apiURL: `http://localhost:1337`,
+      queryLimit: 1000, // Default to 100
+      contentTypes: [`products`],
+      //If using single types place them in this array.
+      // Possibility to login with a strapi user, when content types are not publically available (optional).
+   
+    },
+  }
   ]
 };

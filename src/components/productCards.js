@@ -1,5 +1,5 @@
 import React from "react";
-import {graphql, StaticQuery} from "gatsby"
+import {graphql, StaticQuery, Link} from "gatsby"
 import Img from "gatsby-image"
 const ProductCards = () => {
  
@@ -16,67 +16,59 @@ const ProductCards = () => {
 
     <StaticQuery
   query={graphql`
-  query {
-    oneImage: file(relativePath: { eq: "product-1.jpg" }) {
-      childImageSharp {
-        fixed(height: 300 , width:300,  quality: 100) {          
-          ...GatsbyImageSharpFixed
+  query 
+    {
+      allStrapiProducts {
+        edges {
+          node {
+            price
+            featured
+            slug
+            title
+            featuredImage{
+              childImageSharp {
+                fixed(height: 300 , width:300,  quality: 100) {          
+                  ...GatsbyImageSharpFixed
+                }
+              }
+            }
+            
+            strapiId
+          }
         }
       }
     }
-    twoImage: file(relativePath: { eq: "product-2.jpg" }) {
-      childImageSharp {
-        fixed(height: 300 , width:300, quality: 100) {          
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    threeImage: file(relativePath: { eq: "product-3.jpg" }) {
-      childImageSharp {
-        fixed(height: 300 , width:300,  quality: 100) {          
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-  }
+    
+  
 `}
-  render={data => {
+  render={({allStrapiProducts}) => {
     return(
 
       <div className="flex flex-no-wrap  flex-1  mx-auto   w-full justify-center">
+      
+      {
+        allStrapiProducts.edges.filter(({node}) => node.featured === true)
+        .map(({node})=> 
+  
 
-      <div className="max-w-sm rounded overflow-hidden ">
-      <div className="px-6 py-4">
+  <div className="max-w-sm rounded overflow-hidden ">
+  <div className="px-6 py-4">
+<Link to={`/product/${node.slug}`}>
+<Img fixed={node.featuredImage.childImageSharp.fixed} alt="" />
+    <div className="text-xl mb-2 pt-3">{node.title}</div>
+    <div className="text-sm mb-2 pt-2">{node.price} MAD</div>
+    </Link>
 
-    <Img fixed={data.oneImage.childImageSharp.fixed} alt="" />
-    <div className="text-xl mb-2 pt-3">Phoenix Robilinet</div>
-    <div className="text-sm mb-2 pt-2">200,00 MAD</div>
-
- 
-    </div>
-
-</div> 
-
-
-<div className="max-w-sm rounded overflow-hidden ">
-      <div className="px-6 py-4">
-
-    <Img fixed={data.twoImage.childImageSharp.fixed} alt="" />
-    <div className="text-xl mb-2 pt-3">Avocado</div>
-    <div className="text-sm mb-2 pt-2">35,00 MAD</div>
-    </div>
+</div>
 
 </div> 
 
-<div className="max-w-sm rounded overflow-hidden ">
-      <div className="px-6 py-4">
 
-    <Img fixed={data.threeImage.childImageSharp.fixed} alt="" />
-    <div className="text-xl mb-2 pt-3">Catcus</div>
-    <div className="text-sm mb-2 pt-2">250,00 MAD</div>
-    </div>
+  )}
+      
+    
 
-</div> 
+
 
 </div>
 
