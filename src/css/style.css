@@ -3,3 +3,36 @@
 @tailwind components;
 /* purgecss end ignore */
 @tailwind utilities;
+
+.product__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    justify-items: center;
+
+}
+
+.about__section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.gatsby-image-wrapper  {
+   max-width: 100%;
+}
+
+@media (min-width: 760px) {
+
+
+}
+
+.product__container {
+    display: grid;
+    grid-template-columns: .25fr 1fr;
+}
+
+.sidebar__header {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(250px, 1fr));
+}
+.product__page {
+    grid-gap: 2rem;
+}

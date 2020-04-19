@@ -42,7 +42,7 @@ Kenitra</li>
 
 
 
-  </div>
+  </div>{/*
     <div class="sm:w-1/4 sm:mt-0 mt-8 h-auto " >
 
 
@@ -80,7 +80,7 @@ Kenitra</li>
 
     
     </div>
-
+*/}
 </div>
 </div>
 

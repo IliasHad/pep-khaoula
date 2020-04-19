@@ -1,5 +1,4 @@
 import React from "react";
-
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import dogIllustration from "../images/dog-illustration.svg";
@@ -12,7 +11,7 @@ function AboutPage() {
         title="About"
       />
 
-      <section className="flex flex-col items-center md:flex-row">
+      <section className="flex flex-col items-center md:flex-row ">
         <div className="md:w-2/3 md:mr-8">
           <blockquote className="pl-4 font-serif leading-loose text-justify border-l-4 border-gray-900">
             The point is... to live one&apos;s life in the full complexity of
