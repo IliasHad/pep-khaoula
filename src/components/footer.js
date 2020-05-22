@@ -1,49 +1,47 @@
 import React from "react"
-import {graphql, StaticQuery} from "gatsby"
-import Img from "gatsby-image"
 
 const Footer = () => {
 
 
     return(
 
-<div class="container w-full p-10 " style={{
+<div className="container w-full p-10 " style={{
         position: "relative"
     }}>
-    <div class="sm:flex m-8" style={{
+    <div className="sm:flex m-8" style={{
             flexWrap: "wrap-reverse"
 
     }}>
-  <div class="sm:w-1/4 h-auto">
-      <ul class="list-reset leading-normal">
-          <li class="py-2">About Us</li>
-          <li class="py-2">Our Products</li>
-          <li class="py-2">Contact</li>
+  <div className="sm:w-1/4 h-auto">
+      <ul className="list-reset leading-normal">
+          <li className="py-2">About Us</li>
+          <li className="py-2">Our Products</li>
+          <li className="py-2">Contact</li>
          
       </ul>
   </div>
-  <div class="sm:w-1/4 h-auto sm:mt-0 mt-8">
-      <ul class="list-reset leading-normal">
-      <li class=" py-2">Social Media</li>
-          <li class="py-2">Facebook</li>
-          <li class="py-2">Instagram</li>
+  <div className="sm:w-1/4 h-auto sm:mt-0 mt-8">
+      <ul className="list-reset leading-normal">
+      <li className=" py-2">Social Media</li>
+          <li className="py-2">Facebook</li>
+          <li className="py-2">Instagram</li>
       </ul>
 
 
   </div>
-  <div class="sm:w-1/4 h-auto sm:mt-0 mt-8">
+  <div className="sm:w-1/4 h-auto sm:mt-0 mt-8">
           
-      <ul class="list-reset leading-normal">
-          <li class="py-2">Adress: Km 10 route de rabat, 
+      <ul className="list-reset leading-normal">
+          <li className="py-2">Adress: Km 10 route de rabat, 
 Kenitra</li>
-<li class="py-2">Tel: +212633954998</li>
+<li className="py-2">Tel: +212633954998</li>
       </ul>
 
 
 
 
   </div>{/*
-    <div class="sm:w-1/4 sm:mt-0 mt-8 h-auto " >
+    <div className="sm:w-1/4 sm:mt-0 mt-8 h-auto " >
 
 
 

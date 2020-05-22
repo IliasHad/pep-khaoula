@@ -5,34 +5,99 @@
 @tailwind utilities;
 
 .product__cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    justify-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  justify-items: center;
+}
 
+.product__cards-home {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  justify-items: center;
 }
 
 .about__section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
-.gatsby-image-wrapper  {
-   max-width: 100%;
-}
-
-@media (min-width: 760px) {
-
-
+.gatsby-image-wrapper {
+  max-width: 100%;
 }
 
 .product__container {
-    display: grid;
-    grid-template-columns: .25fr 1fr;
+  display: grid;
+  grid-template-columns: 0.25fr 1fr;
 }
 
 .sidebar__header {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(250px, 1fr));
+  display: grid;
+  grid-template-columns: repeat(2, minmax(250px, 1fr));
 }
 .product__page {
-    grid-gap: 2rem;
+  grid-gap: 2rem;
+}
+
+.sidebar__list li:not(:last-of-type) {
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.sidebar__list li {
+  cursor: pointer;
+}
+.sidebar__title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.sidebar__filter {
+  margin: 2rem 0;
+}
+
+.sort-by__title {
+  display: inline-block;
+}
+
+.sidebar__results-lenght {
+  justify-self: end;
+}
+
+.active .sidebar__list-item {
+  font-weight: bold;
+}
+.product__container-individual {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
+}
+.individual__left {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr;
+}
+
+.product__quantity {
+  display: inline-block;
+}
+
+.product__quantity input {
+  width: 7rem;
+  text-align: center;
+}
+
+.product__description {
+}
+.active.sidebar__list-item {
+  font-weight: bold;
+}
+
+.product___bg-image-wrapper {
+  width: 100%;
+  background-position: bottom center;
+  background-repeat: repeat-y;
+  background-size: cover;
+}
+
+.product___bg-image {
+  width: 100px;
+  height: 100px;
 }
