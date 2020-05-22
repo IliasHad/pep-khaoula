@@ -6,6 +6,11 @@
   "heroImage": "../images/arian-darvishi-wh-RPfR_3_M-unsplash.jpg",
   "mainMenu": [
     {
+      "name": "Contact",
+      "id": "s7dheld57",
+      "path": "/contact"
+    },
+    {
       "name": "Home",
       "path": "/"
     },
