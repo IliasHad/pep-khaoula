@@ -3,5 +3,15 @@
   "description": "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.  \nIlias",
   "primaryCta": "View Products",
   "secondaryCta": "Contact Us",
-  "heroImage": "../images/arian-darvishi-wh-RPfR_3_M-unsplash.jpg"
+  "heroImage": "../images/arian-darvishi-wh-RPfR_3_M-unsplash.jpg",
+  "mainMenu": [
+    {
+      "name": "Home",
+      "path": "/"
+    },
+    {
+      "name": "Products",
+      "path": "/product"
+    }
+  ]
 }
