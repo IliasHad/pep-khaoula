@@ -4,7 +4,7 @@
   "heroImage": "../images/force-majeure-00tlC0Clfrs-unsplash.jpg",
   "mainMenu": [
     {
-      "name": "Home Page",
+      "name": "Home",
       "path": "/"
     },
     {
@@ -26,7 +26,7 @@
     "headline": "  Ready to dive in? "
   },
   "about": {
-    "image": "../images/arian-darvishi-wh-RPfR_3_M-unsplash.jpg",
+    "image": "../images/force-majeure-00tlC0Clfrs-unsplash.jpg",
     "description": "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat Ilias aliqua \n"
   }
 }
