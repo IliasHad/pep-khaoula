@@ -18,5 +18,11 @@
       "id": "s7dheld57",
       "path": "/contact"
     }
-  ]
+  ],
+  "cta": {
+    "mainCta": "View All Products",
+    "mainCta_handle": "/products",
+    "secondaryCta": "Contact Us",
+    "secondaryCta_handle": "/contact"
+  }
 }
