@@ -24,5 +24,9 @@
     "mainCta_handle": "/products",
     "secondaryCta": "Contact Us",
     "secondaryCta_handle": "/contact"
+  },
+  "about": {
+    "image": "../images/darpan-dodiya-2Wa4T-n2WaU-unsplash.jpg",
+    "description": "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.  "
   }
 }
