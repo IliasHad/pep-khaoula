@@ -20,7 +20,7 @@
     }
   ],
   "cta": {
-    "mainCta": "View All Products",
+    "mainCta": "View All Product",
     "mainCta_handle": "/products",
     "secondaryCta": "Contact Us",
     "secondaryCta_handle": "/contact"
