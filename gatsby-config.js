@@ -37,50 +37,12 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
-    {
-      resolve: `gatsby-source-strapi`,
-      options: {
-        apiURL: `http://localhost:1337`,
-        queryLimit: 1000, // Default to 100
-        contentTypes: [`products`],
-        //If using single types place them in this array.
-        // Possibility to login with a strapi user, when content types are not publically available (optional).
-      },
-    },
 
-    {
-      resolve: "gatsby-source-graphql",
-      options: {
-        // The top level query type, can be anything you want!
-        typeName: "GCMS",
-        // The field you'll query against, can also be anything you want.
-        fieldName: "gcms",
-        // Your API endpoint, available from the dashboard and settings window.
-        // You can use this endpoint that features US mountains for now.
-        url:
-          "https://api-eu-central-1.graphcms.com/v2/cka4qcyjc0b5401wc041k0d2a/master",
-      },
-    },
     {
       resolve: `gatsby-source-shopify`,
       options: {
-        // The domain name of your Shopify shop. This is required.
-        // Example: 'gatsby-source-shopify-test-shop' if your Shopify address is
-        // 'gatsby-source-shopify-test-shop.myshopify.com'.
         shopName: process.env.SHOP_NAME,
-
-        // An API access token to your Shopify shop. This is required.
-        // You can generate an access token in the "Manage private apps" section
-        // of your shop's Apps settings. In the Storefront API section, be sure
-        // to select "Allow this app to access your storefront data using the
-        // Storefront API".
-        // See: https://help.shopify.com/api/custom-storefronts/storefront-api/getting-started#authentication
         accessToken: process.env.SHOPIFY_ACCESS_TOKEN,
-
-        // Set verbose to true to display a verbose output on `npm run develop`
-        // or `npm run build`. This prints which nodes are being fetched and how
-        // much time was required to fetch and process the data.
-        // Defaults to true.
         verbose: true,
       },
     },
@@ -101,17 +63,7 @@ module.exports = {
             },
           },
           "gatsby-transformer-json",
-          {
-            resolve: "gatsby-tinacms-git",
-            options: {
-              pathToRepo: ".",
-              pathToContent: "src/data",
-              defaultCommitMessage: "Edited with TinaCMS",
-              defaultCommitName: "TinaCMS",
-              defaultCommitEmail: "git@tinacms.org",
-              pushOnCommit: false,
-            },
-          },
+          "gatsby-tinacms-git",
         ],
       },
     },

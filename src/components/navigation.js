@@ -1,18 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "gatsby";
 
-const Navigation = ({ children }) => {
+const Navigation = ({ links, children }) => {
   const [open, setOpen] = useState(false);
-
-  const links = [
-    { path: "/", name: "Home" },
-    { path: "/product", name: "Product" },
-    { path: "/contact", name: "Contact" },
-  ];
 
   return (
     <div className="max-w-screen-xl mx-auto ">
-      <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+      <div className="relative z-10  bg-white  lg:max-w-2xl lg:w-full ">
         <div className="pt-6 px-4 sm:px-6 lg:px-8">
           <nav className="relative flex items-center justify-between sm:h-10 lg:justify-start">
             <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
@@ -47,9 +41,10 @@ const Navigation = ({ children }) => {
                 </div>
               </div>
             </div>
-            <div className="hidden md:block md:ml-10 md:pr-4">
-              {links.map((link) => (
+            <div className="hidden md:block  md:pr-4">
+              {links.map((link, index) => (
                 <Link
+                  key={index}
                   to={link.path}
                   activeClassName="mr-8 font-medium text-indigo-600 hover:text-indigo-900 focus:outline-none focus:text-indigo-700 transition duration-150 ease-in-out"
                   className={
@@ -98,38 +93,15 @@ const Navigation = ({ children }) => {
                   </div>
                 </div>
                 <div className="px-2 pt-2 pb-3">
-                  <a
-                    href="#"
-                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
-                  >
-                    Product
-                  </a>
-                  <a
-                    href="#"
-                    className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
-                  >
-                    Features
-                  </a>
-                  <a
-                    href="#"
-                    className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
-                  >
-                    Marketplace
-                  </a>
-                  <a
-                    href="#"
-                    className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
-                  >
-                    Company
-                  </a>
-                </div>
-                <div>
-                  <a
-                    href="#"
-                    className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100 hover:text-indigo-700 focus:outline-none focus:bg-gray-100 focus:text-indigo-700 transition duration-150 ease-in-out"
-                  >
-                    Log in
-                  </a>
+                  {links.map((link, index) => (
+                    <Link
+                      key={index}
+                      to={`/${link.handle}`}
+                      className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
                 </div>
               </div>
             </div>

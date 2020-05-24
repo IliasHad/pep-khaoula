@@ -1,67 +1,151 @@
 import { graphql, StaticQuery, Link } from "gatsby";
 import React from "react";
 import Img from "gatsby-image";
-function About() {
+function About({
+  image,
+  description,
+  primaryCtaHandle,
+  primaryCta,
+  secondaryCtaHandle,
+  secondaryCta,
+}) {
   return (
-    <div className="container mx-auto ">
-      <div className="flex flex-no-wrap  flex-1  mx-auto  py-10 w-full justify-center">
-        <div className="w-full rounded">
-          <div className="font-bold text-center text-2xl">About Us</div>
-        </div>
-      </div>
-      <div className="flex flex-1  mx-auto  py-8 w-full about__section justify-center">
-        <div>
-          <StaticQuery
-            query={graphql`
-              {
-                about: file(relativePath: { eq: "about.jpg" }) {
-                  childImageSharp {
-                    fixed(
-                      width: 600
-                      quality: 100
-                      cropFocus: CENTER
-                      fit: COVER
-                    ) {
-                      ...GatsbyImageSharpFixed
-                    }
-                  }
-                }
-              }
-            `}
-            render={(data) => {
-              return <Img fixed={data.about.childImageSharp.fixed} alt="" />;
-            }}
-          />
-        </div>
-
-        <div className="md:px-10">
-          <div className="font-bold text-lg">About Us</div>
-
-          <p className="my-5 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-lg lg:mx-0">
-            We’re plant nursery for more than 20 years and we accumalet a lot of
-            experience and skills
+    <section className="text-gray-700 body-font">
+      <div className="container px-5  mx-auto flex flex-wrap justify-center">
+        <div className="text-center my-12">
+          <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4">
+            About Us
+          </h1>
+          <p className="text-base text-gray-500 leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
+            Blue bottle crucifix vinyl post-ironic four dollar toast vegan
+            taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi
+            pug.
           </p>
-          <div className="flex flex-no-wrap  flex-1  mx-auto  py-5 w-full ">
-            <div className="max-w-sm rounded">
-              <Link
-                to="/product"
-                className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:text-indigo-600 hover:bg-indigo-50 focus:outline-none focus:shadow-outline focus:border-indigo-300 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10"
+        </div>
+        <div className="lg:w-1/2 w-full mb-10 lg:mb-0 rounded-lg overflow-hidden">
+          <Img fixed={image.childImageSharp.fixed} alt="" />
+        </div>
+        <div className="flex flex-col flex-wrap lg:py-6 -mb-10 lg:w-1/2 lg:pl-12 lg:text-left text-center">
+          <div className="flex flex-col mb-10 lg:items-start items-center">
+            <div className="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                className="w-6 h-6"
+                viewBox="0 0 24 24"
               >
-                View Products
-              </Link>
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+              </svg>
             </div>
-            <div className="max-w-sm rounded mx-3">
-              <Link
-                to="/contact"
-                className="w-full  flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10"
+            <div className="flex-grow">
+              <h2 className="text-gray-900 text-lg title-font font-medium mb-3">
+                Shooting Stars
+              </h2>
+              <p className="leading-relaxed text-base">
+                Blue bottle crucifix vinyl post-ironic four dollar toast vegan
+                taxidermy. Gastropub indxgo juice poutine.
+              </p>
+              <a className="mt-3 text-indigo-500 inline-flex items-center">
+                Learn More
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  className="w-4 h-4 ml-2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div className="flex flex-col mb-10 lg:items-start items-center">
+            <div className="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                className="w-6 h-6"
+                viewBox="0 0 24 24"
               >
-                Contact Us
-              </Link>
+                <circle cx="6" cy="6" r="3"></circle>
+                <circle cx="6" cy="18" r="3"></circle>
+                <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
+              </svg>
+            </div>
+            <div className="flex-grow">
+              <h2 className="text-gray-900 text-lg title-font font-medium mb-3">
+                The Catalyzer
+              </h2>
+              <p className="leading-relaxed text-base">
+                Blue bottle crucifix vinyl post-ironic four dollar toast vegan
+                taxidermy. Gastropub indxgo juice poutine.
+              </p>
+              <a className="mt-3 text-indigo-500 inline-flex items-center">
+                Learn More
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  className="w-4 h-4 ml-2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div className="flex flex-col mb-10 lg:items-start items-center">
+            <div className="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                className="w-6 h-6"
+                viewBox="0 0 24 24"
+              >
+                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <div className="flex-grow">
+              <h2 className="text-gray-900 text-lg title-font font-medium mb-3">
+                Neptune
+              </h2>
+              <p className="leading-relaxed text-base">
+                Blue bottle crucifix vinyl post-ironic four dollar toast vegan
+                taxidermy. Gastropub indxgo juice poutine.
+              </p>
+              <a className="mt-3 text-indigo-500 inline-flex items-center">
+                Learn More
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  className="w-4 h-4 ml-2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+              </a>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

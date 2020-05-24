@@ -12,7 +12,7 @@ function AboutPage() {
       />
 
       <section className="flex flex-col items-center md:flex-row ">
-        <div className="md:w-2/3 md:mr-8">
+        <div className="relative z-10 px-4 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
           <blockquote className="pl-4 font-serif leading-loose text-justify border-l-4 border-gray-900">
             The point is... to live one&apos;s life in the full complexity of
             what one is, which is something much darker, more contradictory,
@@ -26,7 +26,7 @@ function AboutPage() {
           </cite>
         </div>
 
-        <figure className="w-2/3 md:w-1/3">
+        <figure className="lg:absolute px-4 lg:inset-y-0 lg:right-0 lg:w-1/2">
           <img alt="A dog relaxing" src={dogIllustration} />
         </figure>
       </section>

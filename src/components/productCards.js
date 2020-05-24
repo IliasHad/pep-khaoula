@@ -13,56 +13,50 @@ const ProductCards = () => {
       <StaticQuery
         query={graphql`
           query MyQuery {
-            allShopifyCollection(filter: { title: { eq: "Home page" } }) {
+            allShopifyProduct(filter: { tags: { eq: "featured" } }, limit: 3) {
               nodes {
-                products {
-                  id
-                  handle
-                  title
-                  images {
-                    localFile {
-                      childImageSharp {
-                        fixed(height: 300, width: 300, quality: 100) {
-                          ...GatsbyImageSharpFixed
-                        }
+                id
+                handle
+                title
+                images {
+                  localFile {
+                    childImageSharp {
+                      fixed(height: 300, width: 300, quality: 100) {
+                        ...GatsbyImageSharpFixed
                       }
                     }
                   }
-                  productType
-                  shopifyId
-                  tags
-                  options {
-                    name
+                }
+                productType
+                shopifyId
+                tags
+                options {
+                  name
+                }
+                priceRange {
+                  maxVariantPrice {
+                    amount
+                    currencyCode
                   }
-                  priceRange {
-                    maxVariantPrice {
-                      amount
-                      currencyCode
-                    }
-                    minVariantPrice {
-                      amount
-                      currencyCode
-                    }
+                  minVariantPrice {
+                    amount
+                    currencyCode
                   }
                 }
-                title
               }
             }
           }
         `}
-        render={({ allShopifyCollection }) => {
+        render={({ allShopifyProduct }) => {
           return (
             <div className="product__cards-home">
-              {allShopifyCollection.nodes[0].products.map((node) => (
+              {allShopifyProduct.nodes.map((node) => (
                 <div
                   className="max-w-sm rounded overflow-hidden "
                   key={node.id}
                 >
                   <div className="px-6 py-4">
                     <Link to={`/product/${node.handle}`}>
-                      {console.log(
-                        node.images[0].localFile.childImageSharp.fixed
-                      )}
                       <Img
                         fixed={node.images[0].localFile.childImageSharp.fixed}
                         alt=""
@@ -70,8 +64,11 @@ const ProductCards = () => {
                       <div className="text-xl mb-2 pt-3">{node.title}</div>
                       <div className="text-sm mb-2 pt-2">
                         {" "}
-                        {node.priceRange.minVariantPrice.amount} -{" "}
-                        {node.priceRange.maxVariantPrice.amount}{" "}
+                        {node.priceRange.minVariantPrice.amount -
+                          node.priceRange.maxVariantPrice.amount ===
+                        0
+                          ? node.priceRange.maxVariantPrice.amount
+                          : `${node.priceRange.minVariantPrice.amount} - ${node.priceRange.maxVariantPrice.amount}`}{" "}
                         {node.priceRange.maxVariantPrice.currencyCode}
                       </div>
                     </Link>

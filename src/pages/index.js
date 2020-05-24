@@ -1,5 +1,5 @@
 import React from "react";
-
+import get from "lodash.get";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import ProductCards from "../components/productCards";
@@ -9,7 +9,6 @@ import Header from "../components/header";
 import { useLocalJsonForm } from "gatsby-tinacms-json";
 
 function IndexPage(props) {
-  console.log(props.data.dataJson);
   const [data] = useLocalJsonForm(props.data.dataJson, FormOptions);
 
   return (
@@ -19,27 +18,46 @@ function IndexPage(props) {
         title="Home"
       />
       <Header
-        hero={props.data.hero}
+        hero={data.heroImage}
         mainTitle={data.mainTitle}
         description={data.description}
-        secondaryCta={data.secondaryCta}
-        primaryCta={data.primaryCta}
+        secondaryCta={data.cta.secondaryCta}
+        secondaryCtaHandle={data.cta.secondaryCta_handle}
+        primaryCtaHandle={data.cta.mainCta_handle}
+        primaryCta={data.cta.mainCta}
+        links={data.mainMenu}
       />
       <section className="m-10">
         <ProductCards />
       </section>
 
       <section className="m-10">
-        <About />
+        <About
+          image={data.about.image}
+          description={data.about.description}
+          secondaryCta={data.cta.secondaryCta}
+          secondaryCtaHandle={data.cta.secondaryCta_handle}
+          primaryCtaHandle={data.cta.mainCta_handle}
+          primaryCta={data.cta.mainCta}
+        />
       </section>
       <section className="m-10">
-        <CTA />
+        <CTA
+          secondaryCta={data.cta.secondaryCta}
+          secondaryCtaHandle={data.cta.secondaryCta_handle}
+          primaryCtaHandle={data.cta.mainCta_handle}
+          primaryCta={data.cta.mainCta}
+          headline={data.cta.headline}
+          text={data.cta.text}
+        />
       </section>
     </Layout>
   );
 }
 
 const FormOptions = {
+  label: "Home Page",
+
   fields: [
     {
       label: "Hero Copy",
@@ -53,32 +71,175 @@ const FormOptions = {
       description: "Choose your supporting copy for the hero",
       component: "textarea",
     },
+    {
+      name: "rawJson.heroImage",
+      label: "Hero Image",
+      description: "Choose your supporting copy for the hero",
+      component: "image",
+
+      previewSrc: (formValues) => {
+        const path = formValues.jsonNode.heroImage;
+        const gatsbyImageNode = get(formValues, path);
+
+        if (gatsbyImageNode)
+          return formValues.jsonNode.heroImage.childImageSharp.fluid.src;
+      },
+      uploadDir: () => {
+        return "src/images/";
+      },
+
+      parse: (filename) => `../images/${filename}`,
+    },
+    {
+      label: "Main Menu",
+      name: "rawJson.mainMenu",
+      component: "group-list",
+      description: "Menu List",
+      defaultItem: () => ({
+        name: "New Menu",
+        id: Math.random()
+          .toString(36)
+          .substr(2, 9),
+      }),
+      itemProps: (item) => ({
+        key: item.id,
+        label: item.name,
+      }),
+      fields: [
+        {
+          label: "Name",
+          name: "name",
+          component: "text",
+        },
+        {
+          label: "Link",
+          name: "path",
+          component: "text",
+        },
+      ],
+    },
+    {
+      label: "CTAs",
+      name: "rawJson.cta",
+      description: "Call To Action Links",
+      component: "group",
+      fields: [
+        {
+          label: "Primary CTA",
+          name: "mainCta",
+          component: "text",
+        },
+        {
+          label: "Primary CTA Link",
+          name: "mainCta_handle",
+          component: "text",
+        },
+        {
+          label: "Secondary CTA",
+          name: "secondaryCta",
+          component: "text",
+        },
+        {
+          label: "Secondary CTA Link",
+          name: "secondaryCta_handle",
+          component: "text",
+        },
+      ],
+    },
+    {
+      label: "About Us Description",
+      name: "rawJson.about",
+      description: "About Us",
+      component: "group",
+      fields: [
+        {
+          name: "image",
+          label: "About Us  Image",
+          description: "Choose your supporting copy for the About Us section",
+          component: "image",
+
+          previewSrc: (formValues) => {
+            const path = formValues.jsonNode.about.image;
+            const gatsbyImageNode = get(formValues, path);
+            if (gatsbyImageNode)
+              return formValues.jsonNode.about.image.childImageSharp.fluid.src;
+          },
+          uploadDir: () => {
+            return "src/images/";
+          },
+
+          parse: (filename) => `../images/${filename}`,
+        },
+        {
+          label: "About Us Paragraph",
+          name: "description",
+          description: "Choose your supporting copy for the hero",
+          component: "textarea",
+        },
+      ],
+    },
+    {
+      label: "CTA Healine",
+      name: "rawJson.cta.headline",
+      component: "text",
+    },
+    {
+      label: "CTA Text",
+      name: "rawJson.cta.text",
+      component: "text",
+    },
   ],
 };
 
 export const query = graphql`
   {
-    hero: file(relativePath: { eq: "hero.jpg" }) {
-      childImageSharp {
-        fixed(
-          width: 750
-          height: 600
-          quality: 100
-          cropFocus: CENTER
-          fit: COVER
-        ) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-
     dataJson {
+      cta {
+        mainCta
+        mainCta_handle
+        secondaryCta
+        secondaryCta_handle
+        text
+        headline
+      }
       mainTitle
-      primaryCta
-      secondaryCta
+
       description
       fileRelativePath
       rawJson
+      mainMenu {
+        name
+        path
+      }
+      heroImage {
+        childImageSharp {
+          fluid {
+            src
+          }
+          fixed(
+            width: 700
+            height: 520
+            quality: 100
+            cropFocus: CENTER
+            fit: COVER
+          ) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      about {
+        description
+        image {
+          childImageSharp {
+            fluid {
+              src
+            }
+            fixed(height: 700, quality: 100) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
+      }
     }
   }
 `;

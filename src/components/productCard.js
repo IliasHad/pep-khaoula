@@ -9,7 +9,9 @@ export const ProductCard = ({ handle, featuredImage, title, price, id }) => (
         <Img fixed={featuredImage.localFile.childImageSharp.fixed} alt="" />
         <div className="text-xl mb-2 pt-3">{title}</div>
         <div className="text-sm mb-2 pt-2">
-          {price.minVariantPrice.amount} - {price.maxVariantPrice.amount}{" "}
+          {price.minVariantPrice.amount - price.maxVariantPrice.amount === 0
+            ? price.maxVariantPrice.amount
+            : `${price.minVariantPrice.amount} - ${price.maxVariantPrice.amount}`}{" "}
           {price.maxVariantPrice.currencyCode}
         </div>
       </Link>

@@ -9,87 +9,186 @@ const ProductPage = ({ data }) => {
   const quanityRef = useRef(0);
   const [quanity, setQuanity] = useState(0);
 
-  console.log(data);
   useEffect(() => {
     document.title = `Pep Khaoula - ${data.shopifyProduct.title}`;
   }, []);
   return (
     <Layout>
-      <Navigation />
-      <section className="mx-24">
-        <div className="product__container-individual">
-          <div className="individual__left">
-            <div className="left__images-list">
-              <ul>
-                {data.shopifyProduct.images.map((el, index) => (
-                  <li key={index}>
-                    <BackgroundImage
-                      className={"product___bg-image-wrapper my-6"}
-                      fluid={el.localFile.childImageSharp.fluid}
-                      backgroundColor={`#040e18`}
+      <Navigation links={data.dataJson.mainMenu} />
+      <section className="text-gray-700 body-font overflow-hidden md:pt-24">
+        <div className="container px-5  mx-auto">
+          <div className="lg:w-4/5 mx-auto flex flex-wrap">
+            <Img
+              fluid={
+                data.shopifyProduct.images[0].localFile.childImageSharp.fluid
+              }
+              className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
+              alt=""
+            />
+            <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+              <h2 className="text-sm title-font text-gray-500 tracking-widest">
+                {data.shopifyCollection.title}
+              </h2>
+              <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
+                {data.shopifyProduct.title}
+              </h1>
+              <div className="flex mb-4">
+                <span className="flex items-center">
+                  <svg
+                    fill="currentColor"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    className="w-4 h-4 text-indigo-500"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                  </svg>
+                  <svg
+                    fill="currentColor"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    className="w-4 h-4 text-indigo-500"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                  </svg>
+                  <svg
+                    fill="currentColor"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    className="w-4 h-4 text-indigo-500"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                  </svg>
+                  <svg
+                    fill="currentColor"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    className="w-4 h-4 text-indigo-500"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                  </svg>
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    className="w-4 h-4 text-indigo-500"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                  </svg>
+                  <span className="text-gray-600 ml-3">4 Reviews</span>
+                </span>
+                <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200">
+                  <a className="text-gray-500">
+                    <svg
+                      fill="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      strokeWidth="2"
+                      className="w-5 h-5"
+                      viewBox="0 0 24 24"
                     >
-                      <div className="product___bg-image"></div>
-                    </BackgroundImage>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="left__featured-image p-6">
-              <Img
-                fluid={
-                  data.shopifyProduct.images[0].localFile.childImageSharp.fluid
-                }
-                alt=""
-              />
-            </div>
-          </div>
-
-          <div className="individual__right p-6">
-            <h4>{data.shopifyProduct.title}</h4>
-            <div className="product__description my-8">
-              <h4 className="text-sm leading-5 font-medium text-gray-700">
-                Description
-              </h4>
-              <p className="my-5">{data.shopifyProduct.description}</p>
-            </div>
-
-            <div className="product__quantity">
-              <label
-                hmtlfor="price"
-                className="text-md leading-5 font-medium text-gray-700"
-              >
-                Quanity
-              </label>
-              <div
-                className="ml-5 relative rounded-md shadow-sm"
-                style={{
-                  display: "inline-block",
-                }}
-              >
-                <div className="absolute inset-y-0 left-0  ml-5 flex items-center ">
-                  <button
-                    className="text-gray-500 sm:text-sm sm:leading-5"
-                    onClick={() => setQuanity(parseInt(quanity) + 1)}
-                  >
-                    +
-                  </button>
+                      <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                    </svg>
+                  </a>
+                  <a className="ml-2 text-gray-500">
+                    <svg
+                      fill="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      strokeWidth="2"
+                      className="w-5 h-5"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                    </svg>
+                  </a>
+                  <a className="ml-2 text-gray-500">
+                    <svg
+                      fill="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      strokeWidth="2"
+                      className="w-5 h-5"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+                    </svg>
+                  </a>
+                </span>
+              </div>
+              <p className="leading-relaxed">
+                {data.shopifyProduct.description}
+              </p>
+              <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
+                <div className="flex">
+                  <span className="mr-3">Color</span>
+                  <button className="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none"></button>
+                  <button className="border-2 border-gray-300 ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none"></button>
+                  <button className="border-2 border-gray-300 ml-1 bg-indigo-500 rounded-full w-6 h-6 focus:outline-none"></button>
                 </div>
-                <input
-                  id="price"
-                  className="form-input sm:text-sm sm:leading-5"
-                  placeholder="0"
-                  value={quanity}
-                  ref={quanityRef}
-                  onChange={(e) => setQuanity(e.target.value)}
-                />
-                <div className="absolute inset-y-0 right-0 flex items-center mr-5">
-                  <button
-                    className="text-gray-500 sm:text-sm sm:leading-5"
-                    onClick={() => setQuanity(parseInt(quanity) - 1)}
-                  >
-                    -
-                  </button>
+                <div className="flex ml-6 items-center">
+                  <span className="mr-3">Size</span>
+                  <div className="relative">
+                    <select className="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-indigo-500 text-base pl-3 pr-10">
+                      <option>SM</option>
+                      <option>M</option>
+                      <option>L</option>
+                      <option>XL</option>
+                    </select>
+                    <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
+                      <svg
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        className="w-4 h-4"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M6 9l6 6 6-6"></path>
+                      </svg>
+                    </span>
+                  </div>
                 </div>
+              </div>
+              <div className="flex">
+                <span className="title-font font-medium text-2xl text-gray-900">
+                  {data.shopifyProduct.priceRange.minVariantPrice.amount -
+                    data.shopifyProduct.priceRange.maxVariantPrice.amount ===
+                  0
+                    ? data.shopifyProduct.priceRange.maxVariantPrice.amount
+                    : `${data.shopifyProduct.priceRange.minVariantPrice.amount} - ${data.shopifyProduct.priceRange.maxVariantPrice.amount}`}{" "}
+                  {data.shopifyProduct.priceRange.maxVariantPrice.currencyCode}
+                </span>
+                <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                  Contact Us
+                </button>
+                <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+                  <svg
+                    fill="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    className="w-5 h-5"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                  </svg>
+                </button>
               </div>
             </div>
           </div>
@@ -107,9 +206,11 @@ export const query = graphql`
       priceRange {
         minVariantPrice {
           amount
+          currencyCode
         }
         maxVariantPrice {
           amount
+          currencyCode
         }
       }
       description
@@ -123,6 +224,15 @@ export const query = graphql`
           }
         }
       }
+    }
+    dataJson {
+      mainMenu {
+        name
+        path
+      }
+    }
+    shopifyCollection(products: { elemMatch: { handle: { eq: $handle } } }) {
+      title
     }
   }
 `;

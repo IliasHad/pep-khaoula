@@ -21,9 +21,7 @@ const Collection = ({ data }) => {
   useEffect(() => {
     let productsData = addCategoryToProducts(data.allShopifyCollection.nodes);
 
-    console.log(productsData);
-
-    setCategories(productsData.map((el) => el.category));
+    setCategories(Array.from(new Set(productsData.map((el) => el.category))));
     setProducts(productsData);
   }, []);
 
@@ -39,7 +37,6 @@ const Collection = ({ data }) => {
   }, [category]);
 
   useEffect(() => {
-    console.log(sortBy);
     setProducts([]);
 
     let productsData = addCategoryToProducts(data.allShopifyCollection.nodes);
@@ -55,10 +52,13 @@ const Collection = ({ data }) => {
   }, [sortBy]);
   const addCategoryToProducts = (products) => {
     let productsData = [];
-    products.forEach((el) => {
-      el.products.forEach((product) =>
-        productsData.push({ ...product, category: el.title })
-      );
+    products.map((el) => {
+      el.title, el.products;
+      el.products.forEach((product) => {
+        if (!productsData.find((el) => el.handle === product.handle)) {
+          productsData.push({ ...product, category: el.title });
+        }
+      });
     });
 
     return productsData;
@@ -101,9 +101,9 @@ const Collection = ({ data }) => {
 
   return (
     <Layout>
-      <Navigation />
+      <Navigation links={data.dataJson.mainMenu} />
 
-      <section className="mx-24">
+      <section className="mx-24 md:pt-24">
         <div className="product__container">
           <div className="left__sidebar">
             <div className="sidebar__part">
@@ -247,6 +247,12 @@ export default Collection;
 
 export const query = graphql`
   query {
+    dataJson {
+      mainMenu {
+        name
+        path
+      }
+    }
     allShopifyCollection {
       nodes {
         products {
