@@ -19,7 +19,7 @@
   ],
   "cta": {
     "mainCta": "View All Products",
-    "mainCta_handle": "/products-",
+    "mainCta_handle": "/product",
     "secondaryCta": "Contact Us",
     "secondaryCta_handle": "/contact",
     "text": "Start your free trial today.",
