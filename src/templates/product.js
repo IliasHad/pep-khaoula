@@ -17,7 +17,7 @@ const ProductPage = ({ data }) => {
       <Navigation links={data.dataJson.mainMenu} />
       <section className="text-gray-700 body-font overflow-hidden md:pt-24">
         <div className="container px-5  mx-auto">
-          <div className="lg:w-4/5 mx-auto flex flex-wrap">
+          <div className="llg:w-full mx-auto flex flex-wrap">
             <Img
               fluid={
                 data.shopifyProduct.images[0].localFile.childImageSharp.fluid
@@ -37,8 +37,8 @@ const ProductPage = ({ data }) => {
                   <svg
                     fill="currentColor"
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     strokeWidth="2"
                     className="w-4 h-4 text-indigo-500"
                     viewBox="0 0 24 24"
@@ -48,8 +48,8 @@ const ProductPage = ({ data }) => {
                   <svg
                     fill="currentColor"
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     strokeWidth="2"
                     className="w-4 h-4 text-indigo-500"
                     viewBox="0 0 24 24"
@@ -59,8 +59,8 @@ const ProductPage = ({ data }) => {
                   <svg
                     fill="currentColor"
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     strokeWidth="2"
                     className="w-4 h-4 text-indigo-500"
                     viewBox="0 0 24 24"
@@ -70,8 +70,8 @@ const ProductPage = ({ data }) => {
                   <svg
                     fill="currentColor"
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     strokeWidth="2"
                     className="w-4 h-4 text-indigo-500"
                     viewBox="0 0 24 24"
@@ -81,8 +81,8 @@ const ProductPage = ({ data }) => {
                   <svg
                     fill="none"
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     strokeWidth="2"
                     className="w-4 h-4 text-indigo-500"
                     viewBox="0 0 24 24"
@@ -95,8 +95,8 @@ const ProductPage = ({ data }) => {
                   <a className="text-gray-500">
                     <svg
                       fill="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       strokeWidth="2"
                       className="w-5 h-5"
                       viewBox="0 0 24 24"
@@ -107,8 +107,8 @@ const ProductPage = ({ data }) => {
                   <a className="ml-2 text-gray-500">
                     <svg
                       fill="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       strokeWidth="2"
                       className="w-5 h-5"
                       viewBox="0 0 24 24"
@@ -119,8 +119,8 @@ const ProductPage = ({ data }) => {
                   <a className="ml-2 text-gray-500">
                     <svg
                       fill="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       strokeWidth="2"
                       className="w-5 h-5"
                       viewBox="0 0 24 24"
@@ -153,8 +153,8 @@ const ProductPage = ({ data }) => {
                       <svg
                         fill="none"
                         stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                         strokeWidth="2"
                         className="w-4 h-4"
                         viewBox="0 0 24 24"
@@ -180,8 +180,8 @@ const ProductPage = ({ data }) => {
                 <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                   <svg
                     fill="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     strokeWidth="2"
                     className="w-5 h-5"
                     viewBox="0 0 24 24"
