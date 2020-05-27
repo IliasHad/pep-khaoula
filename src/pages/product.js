@@ -1,17 +1,37 @@
 import React, { useState, useEffect, useRef } from "react";
 import Layout from "../components/layout";
 import Navigation from "../components/navigation";
-import { Link, StaticQuery } from "gatsby";
+import { Link, StaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
 import { ProductCard } from "../components/productCard";
+import { useLocation } from "@reach/router";
+import queryString from "query-string";
 const Collection = ({ data }) => {
   const minPriceRef = useRef(0);
   const maxPriceRef = useRef(0);
   const sortByRef = useRef("");
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [category, setCategory] = useState("all");
   const [sortBy, setSortBy] = useState("");
+
+  const getSelectedCollection = (query) => {
+    const fallback = "all";
+
+    if (query) {
+      const queriedTheme = queryString.parse(query);
+      const { collection } = queriedTheme;
+
+      // Ensure a valid expected value is passed
+      return collection;
+    }
+
+    return fallback;
+  };
+
+  const location = useLocation();
+  const defaultCollection =
+    (location.search && getSelectedCollection(location.search)) || "all";
+  const [category, setCategory] = useState(defaultCollection);
 
   const sortedProductByCategory = (products) =>
     category === "all"
@@ -22,7 +42,11 @@ const Collection = ({ data }) => {
     let productsData = addCategoryToProducts(data.allShopifyCollection.nodes);
 
     setCategories(Array.from(new Set(productsData.map((el) => el.category))));
-    setProducts(productsData);
+    setProducts([]);
+    console.log(category);
+    const filtered = sortedProductByCategory(productsData);
+
+    setProducts(filtered);
   }, []);
 
   useEffect(() => {
@@ -48,7 +72,7 @@ const Collection = ({ data }) => {
         ? sortByLowest(productsData)
         : sortByAlphabetical(productsData);
 
-    setProducts(filtered);
+    setProducts(sortedProductByCategory(filtered));
   }, [sortBy]);
   const addCategoryToProducts = (products) => {
     let productsData = [];

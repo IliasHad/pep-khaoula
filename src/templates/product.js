@@ -1,15 +1,58 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 
 import Layout from "../components/layout";
 import Navigation from "../components/navigation";
 import Img from "gatsby-image";
 import BackgroundImage from "gatsby-background-image";
-
+import { graphql } from "gatsby";
+import StoreContext from "../context/StoreContext";
+const {
+  addVariantToCart,
+  store: { client, adding },
+} = useContext(StoreContext);
 const ProductPage = ({ data }) => {
   const quanityRef = useRef(0);
   const [quanity, setQuanity] = useState(0);
+  const [variants, setVariants] = useState([]);
+  const [selectedVariant, setSelectedVariant] = useState(null);
+  const [price, setPrice] = useState(null);
+  const addItemToCart = useAddItemToCart();
+  const handleAddToCart = () => {
+    if (selectedVariant) {
+      let { shopifyId } = variants.filter(
+        (variant) => variant.title === selectedVariant.value
+      )[0];
+
+      console.log(shopifyId);
+
+      addVariantToCart(shopifyId, 1);
+      //  alert("🛒 Added to your cart!");
+      setAddedToCartMessage("🛒 Added to your cart!");
+    }
+  };
+  const [addedToCartMessage, setAddedToCartMessage] = useState(null);
+  useEffect(() => {
+    setVariants(data.shopifyProduct.variants);
+
+    if (selectedVariant) {
+      setPrice(
+        variants.filter((variant) => variant.title === selectedVariant.value)[0]
+          .price
+      );
+    }
+  }, [selectedVariant]);
 
   useEffect(() => {
+    let options = data.shopifyProduct.options.filter(
+      (option) => option.name === "Title"
+    );
+
+    if (options.length > 0) {
+      setSelectedVariant({
+        option: "Title",
+        value: data.shopifyProduct.variants[0].title,
+      });
+    }
     document.title = `Pep Khaoula - ${data.shopifyProduct.title}`;
   }, []);
   return (
@@ -17,6 +60,7 @@ const ProductPage = ({ data }) => {
       <Navigation links={data.dataJson.mainMenu} />
       <section className="text-gray-700 body-font overflow-hidden md:pt-24">
         <div className="container px-5  mx-auto">
+          {addedToCartMessage ? <div>{addedToCartMessage}</div> : null}
           <div className="llg:w-full mx-auto flex flex-wrap">
             <Img
               fluid={
@@ -130,52 +174,71 @@ const ProductPage = ({ data }) => {
                   </a>
                 </span>
               </div>
+              <h2 className="text-sm title-font text-gray-500 tracking-widest">
+                Description
+              </h2>
               <p className="leading-relaxed">
                 {data.shopifyProduct.description}
               </p>
               <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
-                <div className="flex">
-                  <span className="mr-3">Color</span>
-                  <button className="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none"></button>
-                  <button className="border-2 border-gray-300 ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none"></button>
-                  <button className="border-2 border-gray-300 ml-1 bg-indigo-500 rounded-full w-6 h-6 focus:outline-none"></button>
-                </div>
-                <div className="flex ml-6 items-center">
-                  <span className="mr-3">Size</span>
-                  <div className="relative">
-                    <select className="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-indigo-500 text-base pl-3 pr-10">
-                      <option>SM</option>
-                      <option>M</option>
-                      <option>L</option>
-                      <option>XL</option>
-                    </select>
-                    <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
-                      <svg
-                        fill="none"
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        className="w-4 h-4"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M6 9l6 6 6-6"></path>
-                      </svg>
-                    </span>
-                  </div>
-                </div>
+                {data.shopifyProduct.options &&
+                  data.shopifyProduct.options
+                    .filter((option) => option.name !== "Title")
+                    .map((option, id) => (
+                      <div className="flex  items-center" key={id}>
+                        <span className="mr-3">{option.name}</span>
+                        <div className="relative">
+                          <select
+                            className="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-indigo-500 text-base pl-3 pr-10"
+                            onChange={(e) =>
+                              setSelectedVariant({
+                                option: option.name,
+                                value: e.target.value,
+                              })
+                            }
+                          >
+                            {data.shopifyProduct.variants.map(
+                              (variant, key) => (
+                                <option key={key.shopifyId}>
+                                  {variant.title}
+                                </option>
+                              )
+                            )}
+                          </select>
+                          <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
+                            <svg
+                              fill="none"
+                              stroke="currentColor"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              className="w-4 h-4"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                          </span>
+                        </div>
+                      </div>
+                    ))}
               </div>
               <div className="flex">
                 <span className="title-font font-medium text-2xl text-gray-900">
-                  {data.shopifyProduct.priceRange.minVariantPrice.amount -
-                    data.shopifyProduct.priceRange.maxVariantPrice.amount ===
-                  0
+                  {price
+                    ? price
+                    : data.shopifyProduct.priceRange.minVariantPrice.amount -
+                        data.shopifyProduct.priceRange.maxVariantPrice
+                          .amount ===
+                      0
                     ? data.shopifyProduct.priceRange.maxVariantPrice.amount
                     : `${data.shopifyProduct.priceRange.minVariantPrice.amount} - ${data.shopifyProduct.priceRange.maxVariantPrice.amount}`}{" "}
                   {data.shopifyProduct.priceRange.maxVariantPrice.currencyCode}
                 </span>
-                <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
-                  Contact Us
+                <button
+                  onClick={handleAddToCart}
+                  className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
+                >
+                  Add To Cart
                 </button>
                 <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                   <svg
@@ -203,6 +266,16 @@ export const query = graphql`
       id
       handle
       title
+      variants {
+        price
+        title
+        shopifyId
+      }
+      options {
+        name
+        id
+        values
+      }
       priceRange {
         minVariantPrice {
           amount

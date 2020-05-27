@@ -2,6 +2,7 @@ import React from "react";
 import SEO from "../components/seo";
 import Layout from "../components/layout";
 import Navigation from "../components/navigation";
+import { graphql } from "gatsby";
 
 function ContactPage({ data }) {
   return (

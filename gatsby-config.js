@@ -18,6 +18,15 @@ module.exports = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
     `gatsby-plugin-react-helmet`,
+    {
+      // This plugin lets me access environment variables that
+      // aren't prefixed with Gatsby. This allows me to use
+      // Shopify-related variables in the context setup script.
+      resolve: `gatsby-plugin-env-variables`,
+      options: {
+        whitelist: ["SHOP_NAME", "SHOP_TOKEN"],
+      },
+    },
 
     {
       resolve: "gatsby-plugin-postcss",
@@ -42,7 +51,7 @@ module.exports = {
       resolve: `gatsby-source-shopify`,
       options: {
         shopName: process.env.SHOP_NAME,
-        accessToken: process.env.SHOPIFY_ACCESS_TOKEN,
+        accessToken: process.env.SHOP_TOKEN,
         verbose: true,
       },
     },
