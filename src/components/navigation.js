@@ -1,8 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "gatsby";
-
+import reduce from "lodash/reduce";
+import StoreContext from "../context/StoreContext";
+const useQuantity = () => {
+  const {
+    store: { checkout },
+  } = useContext(StoreContext);
+  const items = checkout ? checkout.lineItems : [];
+  const total = reduce(items, (acc, item) => acc + item.quantity, 0);
+  return [total !== 0, total];
+};
 const Navigation = ({ links, children }) => {
   const [open, setOpen] = useState(false);
+  const [hasItems, quantity] = useQuantity();
 
   return (
     <div className="max-w-screen-xl mx-auto ">
@@ -41,6 +51,7 @@ const Navigation = ({ links, children }) => {
                 </div>
               </div>
             </div>
+
             <div className="hidden md:block  md:pr-4">
               {links.map((link, index) => (
                 <Link
@@ -57,7 +68,8 @@ const Navigation = ({ links, children }) => {
             </div>
           </nav>
         </div>
-
+        {hasItems && <div>{quantity}</div>}
+        Cart 🛍
         {open && (
           <div x-show="open">
             <div className="rounded-lg shadow-md">
@@ -107,7 +119,6 @@ const Navigation = ({ links, children }) => {
             </div>
           </div>
         )}
-
         {children}
       </div>
     </div>

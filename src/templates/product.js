@@ -6,30 +6,14 @@ import Img from "gatsby-image";
 import BackgroundImage from "gatsby-background-image";
 import { graphql } from "gatsby";
 import StoreContext from "../context/StoreContext";
-const {
-  addVariantToCart,
-  store: { client, adding },
-} = useContext(StoreContext);
+import ProductForm from "../components/productForm";
 const ProductPage = ({ data }) => {
   const quanityRef = useRef(0);
   const [quanity, setQuanity] = useState(0);
   const [variants, setVariants] = useState([]);
   const [selectedVariant, setSelectedVariant] = useState(null);
   const [price, setPrice] = useState(null);
-  const addItemToCart = useAddItemToCart();
-  const handleAddToCart = () => {
-    if (selectedVariant) {
-      let { shopifyId } = variants.filter(
-        (variant) => variant.title === selectedVariant.value
-      )[0];
 
-      console.log(shopifyId);
-
-      addVariantToCart(shopifyId, 1);
-      //  alert("🛒 Added to your cart!");
-      setAddedToCartMessage("🛒 Added to your cart!");
-    }
-  };
   const [addedToCartMessage, setAddedToCartMessage] = useState(null);
   useEffect(() => {
     setVariants(data.shopifyProduct.variants);
@@ -180,79 +164,8 @@ const ProductPage = ({ data }) => {
               <p className="leading-relaxed">
                 {data.shopifyProduct.description}
               </p>
-              <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
-                {data.shopifyProduct.options &&
-                  data.shopifyProduct.options
-                    .filter((option) => option.name !== "Title")
-                    .map((option, id) => (
-                      <div className="flex  items-center" key={id}>
-                        <span className="mr-3">{option.name}</span>
-                        <div className="relative">
-                          <select
-                            className="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-indigo-500 text-base pl-3 pr-10"
-                            onChange={(e) =>
-                              setSelectedVariant({
-                                option: option.name,
-                                value: e.target.value,
-                              })
-                            }
-                          >
-                            {data.shopifyProduct.variants.map(
-                              (variant, key) => (
-                                <option key={key.shopifyId}>
-                                  {variant.title}
-                                </option>
-                              )
-                            )}
-                          </select>
-                          <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
-                            <svg
-                              fill="none"
-                              stroke="currentColor"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              className="w-4 h-4"
-                              viewBox="0 0 24 24"
-                            >
-                              <path d="M6 9l6 6 6-6"></path>
-                            </svg>
-                          </span>
-                        </div>
-                      </div>
-                    ))}
-              </div>
-              <div className="flex">
-                <span className="title-font font-medium text-2xl text-gray-900">
-                  {price
-                    ? price
-                    : data.shopifyProduct.priceRange.minVariantPrice.amount -
-                        data.shopifyProduct.priceRange.maxVariantPrice
-                          .amount ===
-                      0
-                    ? data.shopifyProduct.priceRange.maxVariantPrice.amount
-                    : `${data.shopifyProduct.priceRange.minVariantPrice.amount} - ${data.shopifyProduct.priceRange.maxVariantPrice.amount}`}{" "}
-                  {data.shopifyProduct.priceRange.maxVariantPrice.currencyCode}
-                </span>
-                <button
-                  onClick={handleAddToCart}
-                  className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
-                >
-                  Add To Cart
-                </button>
-                <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
-                  <svg
-                    fill="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-5 h-5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
-                  </svg>
-                </button>
-              </div>
+
+              <ProductForm product={data.shopifyProduct} />
             </div>
           </div>
         </div>
@@ -261,20 +174,30 @@ const ProductPage = ({ data }) => {
   );
 };
 export const query = graphql`
-  query($handle: String!) {
+  query($handle: String!, $shopifyId: String) {
     shopifyProduct(handle: { eq: $handle }) {
       id
-      handle
       title
-      variants {
-        price
-        title
-        shopifyId
-      }
+      handle
+      productType
+      description
+      descriptionHtml
+      shopifyId
       options {
-        name
         id
+        name
         values
+      }
+      variants {
+        id
+        title
+        price
+        availableForSale
+        shopifyId
+        selectedOptions {
+          name
+          value
+        }
       }
       priceRange {
         minVariantPrice {
@@ -286,8 +209,6 @@ export const query = graphql`
           currencyCode
         }
       }
-      description
-
       images {
         localFile {
           childImageSharp {
@@ -304,8 +225,12 @@ export const query = graphql`
         path
       }
     }
-    shopifyCollection(products: { elemMatch: { handle: { eq: $handle } } }) {
+
+    shopifyCollection(
+      products: { elemMatch: { shopifyId: { eq: $shopifyId } } }
+    ) {
       title
+      handle
     }
   }
 `;

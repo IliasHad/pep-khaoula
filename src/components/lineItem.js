@@ -1,46 +1,44 @@
 import React, { useContext } from "react";
-import { Link } from "gatsby";
 
 import StoreContext from "../context/StoreContext";
 
 const LineItem = (props) => {
-  const { item } = props;
+  const { line_item } = props;
   const {
     removeLineItem,
     store: { client, checkout },
   } = useContext(StoreContext);
 
-  const variantImage = item.variant.image ? (
+  const variantImage = line_item.variant.image ? (
     <img
-      src={item.variant.image.src}
-      alt={`${item.title} product shot`}
+      src={line_item.variant.image.src}
+      alt={`${line_item.title} product shot`}
       height="60px"
     />
   ) : null;
 
-  const selectedOptions = item.variant.selectedOptions
-    ? item.variant.selectedOptions.map(
+  const selectedOptions = line_item.variant.selectedOptions
+    ? line_item.variant.selectedOptions.map(
         (option) => `${option.name}: ${option.value} `
       )
     : null;
 
   const handleRemove = () => {
-    removeLineItem(client, checkout.id, item.id);
+    removeLineItem(client, checkout.id, line_item.id);
   };
 
   return (
     <div>
-      {console.log(item)}
-      <Link to={`/product/${item.variant.product.handle}/`}>
-        {variantImage}
-      </Link>
+      {variantImage}
       <p>
-        {item.title}
+        {line_item.title}
         {`  `}
-        {item.variant.title === !"Default Title" ? item.variant.title : ""}
+        {line_item.variant.title === !"Default Title"
+          ? line_item.variant.title
+          : ""}
       </p>
       {selectedOptions}
-      {item.quantity}
+      {line_item.quantity}
       <button onClick={handleRemove}>Remove</button>
     </div>
   );
