@@ -9,7 +9,17 @@ const Cart = () => {
   } = useContext(StoreContext);
 
   const handleCheckout = () => {
-    window.open(checkout.webUrl);
+    window.open(
+      `https://api.whatsapp.com/send?phone=+212633954998&text=${checkout.lineItems.map(
+        (el, index) =>
+          `${index === 0 ? "" : "%0A"}   ${el.quantity} - ${
+            el.title
+          } ${el.variant.selectedOptions
+            .filter((option) => option.name !== "Title")
+            .map((option) => `${option.name}: ${option.value} `)} 
+            `
+      )}`
+    );
   };
 
   const line_items = checkout.lineItems.map((line_item) => {
@@ -17,24 +27,18 @@ const Cart = () => {
   });
 
   return (
-    <div>
-      {line_items}
-      <h2>Subtotal</h2>
-      <p>$ {checkout.subtotalPrice}</p>
-      <br />
-      <h2>Taxes</h2>
-      <p>$ {checkout.totalTax}</p>
-      <br />
-      <h2>Total</h2>
-      <p>$ {checkout.totalPrice}</p>
-      <br />
-      <button
-        onClick={handleCheckout}
-        disabled={checkout.lineItems.length === 0}
-      >
-        Check out
-      </button>
-    </div>
+    <section class="text-gray-700 body-font overflow-hidden">
+      <div class="container px-5 py-24 mx-auto">
+        <div class="-my-8">{line_items}</div>
+
+        <button
+          onClick={handleCheckout}
+          className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
+        >
+          Checkout
+        </button>
+      </div>
+    </section>
   );
 };
 

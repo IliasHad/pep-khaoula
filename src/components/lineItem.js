@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-
+import React, { useContext, useStaticQuery } from "react";
+import { graphql } from "gatsby";
 import StoreContext from "../context/StoreContext";
-
+import Img from "gatsby-image";
 const LineItem = (props) => {
   const { line_item } = props;
   const {
@@ -13,7 +13,7 @@ const LineItem = (props) => {
     <img
       src={line_item.variant.image.src}
       alt={`${line_item.title} product shot`}
-      height="60px"
+      width="200px"
     />
   ) : null;
 
@@ -28,18 +28,34 @@ const LineItem = (props) => {
   };
 
   return (
-    <div>
-      {variantImage}
-      <p>
-        {line_item.title}
-        {`  `}
-        {line_item.variant.title === !"Default Title"
-          ? line_item.variant.title
-          : ""}
-      </p>
-      {selectedOptions}
-      {line_item.quantity}
-      <button onClick={handleRemove}>Remove</button>
+    <div class="py-8 flex flex-wrap md:flex-no-wrap">
+      <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
+        {variantImage}
+      </div>
+      <div class="md:flex-grow">
+        <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">
+          {line_item.title}
+        </h2>
+        <p class="leading-relaxed">{selectedOptions}</p>
+        <button
+          class="text-indigo-500 inline-flex items-center mt-4"
+          onClick={handleRemove}
+        >
+          Remove
+          <svg
+            class="w-4 h-4 ml-2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M5 12h14"></path>
+            <path d="M12 5l7 7-7 7"></path>
+          </svg>
+        </button>
+      </div>
     </div>
   );
 };
