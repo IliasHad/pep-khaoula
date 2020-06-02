@@ -42,26 +42,12 @@ function About({
             </div>
             <div className="flex-grow">
               <h2 className="text-gray-900 text-lg title-font font-medium mb-3">
-                Shooting Stars
+                Plus de 20 ans d'expérience{" "}
               </h2>
               <p className="leading-relaxed text-base">
                 Blue bottle crucifix vinyl post-ironic four dollar toast vegan
                 taxidermy. Gastropub indxgo juice poutine.
               </p>
-              <a className="mt-3 text-indigo-500 inline-flex items-center">
-                Learn More
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  className="w-4 h-4 ml-2"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7"></path>
-                </svg>
-              </a>
             </div>
           </div>
           <div className="flex flex-col mb-10 lg:items-start items-center">
@@ -82,26 +68,12 @@ function About({
             </div>
             <div className="flex-grow">
               <h2 className="text-gray-900 text-lg title-font font-medium mb-3">
-                The Catalyzer
+                Le leader dans les arbres fruitiers
               </h2>
               <p className="leading-relaxed text-base">
                 Blue bottle crucifix vinyl post-ironic four dollar toast vegan
                 taxidermy. Gastropub indxgo juice poutine.
               </p>
-              <a className="mt-3 text-indigo-500 inline-flex items-center">
-                Learn More
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  className="w-4 h-4 ml-2"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7"></path>
-                </svg>
-              </a>
             </div>
           </div>
           <div className="flex flex-col mb-10 lg:items-start items-center">
@@ -121,26 +93,12 @@ function About({
             </div>
             <div className="flex-grow">
               <h2 className="text-gray-900 text-lg title-font font-medium mb-3">
-                Neptune
+                Service d'entretien de qualité{" "}
               </h2>
               <p className="leading-relaxed text-base">
                 Blue bottle crucifix vinyl post-ironic four dollar toast vegan
                 taxidermy. Gastropub indxgo juice poutine.
               </p>
-              <a className="mt-3 text-indigo-500 inline-flex items-center">
-                Learn More
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  className="w-4 h-4 ml-2"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7"></path>
-                </svg>
-              </a>
             </div>
           </div>
         </div>
