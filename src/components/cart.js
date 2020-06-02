@@ -73,7 +73,10 @@ const Cart = () => {
               </div>
             </div>
             <div className="flex justify-between mt-12">
-              <Link className="text-indigo-500 inline-flex items-center ">
+              <Link
+                to="/product"
+                className="text-indigo-500 inline-flex items-center "
+              >
                 Parcourir Autres Produits
               </Link>
               <a

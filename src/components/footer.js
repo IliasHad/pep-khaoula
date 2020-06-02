@@ -9,13 +9,13 @@ const Footer = () => {
             <span className="text-xl">Pepiniere Khaoula</span>
           </a>
           <p className="mt-2 text-sm text-gray-500">
-            Welcome To The World Of Plants
+            Servir des produits de bonne qualité depuis 1999.
           </p>
         </div>
         <div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
           <div className="lg:w-1/3 md:w-1/2 w-full px-4">
             <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
-              Quick Links
+              Liens rapides{" "}
             </h2>
             <nav className="list-none mb-10">
               <li>
@@ -23,7 +23,7 @@ const Footer = () => {
                   to="/product"
                   className="text-gray-600 hover:text-gray-800"
                 >
-                  Products
+                  Nos Produits
                 </Link>
               </li>
               <li>
@@ -31,19 +31,22 @@ const Footer = () => {
                   to="/contact"
                   className="text-gray-600 hover:text-gray-800"
                 >
-                  Contact Us
+                  Contactez Nous
                 </Link>
               </li>
               <li>
-                <Link to="/" className="text-gray-600 hover:text-gray-800">
-                  Privacy Policy
+                <Link
+                  to="/collection"
+                  className="text-gray-600 hover:text-gray-800"
+                >
+                  Nos Collections
                 </Link>
               </li>
             </nav>
           </div>
           <div className="lg:w-1/3 md:w-1/2 w-full px-4">
             <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
-              Social Media
+              Nos Réseaux Sociaux{" "}
             </h2>
             <nav className="list-none mb-10">
               <li>
@@ -66,7 +69,7 @@ const Footer = () => {
 
           <div className="lg:w-1/3 md:w-1/2 w-full px-4">
             <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
-              Contact
+              Contactez Nous
             </h2>
             <nav className="list-none mb-10">
               <li>
@@ -99,7 +102,7 @@ const Footer = () => {
               className="text-gray-600 ml-1"
               target="_blank"
             >
-              @iliashaddad3
+              Build with @iliashaddad3
             </a>
           </p>
           <span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
