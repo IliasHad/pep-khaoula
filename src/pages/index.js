@@ -8,7 +8,8 @@ import CTA from "../components/cta";
 import Header from "../components/header";
 import { useLocalJsonForm } from "gatsby-tinacms-json";
 import { graphql } from "gatsby";
-
+import { Steps } from "../components/steps";
+import { Gallery } from "../components/gallery";
 function IndexPage(props) {
   const [data] = useLocalJsonForm(props.data.dataJson, FormOptions);
 
@@ -41,6 +42,10 @@ function IndexPage(props) {
           primaryCtaHandle={data.cta.mainCta_handle}
           primaryCta={data.cta.mainCta}
         />
+      </section>
+
+      <section className="m-10">
+        <Gallery />
       </section>
       <section className="m-10">
         <CTA

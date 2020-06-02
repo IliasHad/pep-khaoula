@@ -18,6 +18,9 @@ const ProductForm = ({ product }) => {
     addVariantToCart,
     store: { client, adding },
   } = useContext(StoreContext);
+  const [addedToCartMessage, setAddedToCartMessage] = useState(
+    "Ajouter Au Panier"
+  );
 
   const productVariant =
     client.product.helpers.variantForOptions(product, variant) || variant;
@@ -60,8 +63,10 @@ const ProductForm = ({ product }) => {
     setVariant({ ...selectedVariant });
   };
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (e) => {
+    setAddedToCartMessage("Adding ..");
     addVariantToCart(productVariant.shopifyId, quantity);
+    setAddedToCartMessage("Voir Le Panier");
   };
 
   /* 
@@ -139,13 +144,14 @@ const ProductForm = ({ product }) => {
         <span className="title-font font-medium text-2xl text-gray-900">
           {price}
         </span>
+
         <button
           type="submit"
           disabled={!available || adding}
           onClick={handleAddToCart}
           className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
         >
-          Add To Cart
+          {addedToCartMessage}
         </button>
       </div>
     </>

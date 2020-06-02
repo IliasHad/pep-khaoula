@@ -16,7 +16,7 @@ function ContactPage({ data }) {
         <section className="text-gray-700 body-font relative p-4">
           <div className="flex flex-col text-center w-full ">
             <h1 className="sm:text-3xl text-2xl  font-medium title-font mb-4 text-gray-900">
-              Contact Us
+              Contactez Nous
             </h1>
             <p className="lg:w-2/3 mx-auto text-gray-500 leading-relaxed text-base">
               Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
@@ -85,7 +85,7 @@ function ContactPage({ data }) {
                 Send Message
               </button>
               <p className="text-xs text-gray-500 mt-3">
-                Reply within 24 hours
+                Répondre dans 24 heures
               </p>
             </div>
           </div>

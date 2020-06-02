@@ -14,7 +14,7 @@ function About({
       <div className="container px-5  mx-auto flex flex-wrap justify-center">
         <div className="text-center my-12">
           <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4">
-            About Us
+            Note Mission
           </h1>
           <p className="text-base text-gray-500 leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
             Blue bottle crucifix vinyl post-ironic four dollar toast vegan

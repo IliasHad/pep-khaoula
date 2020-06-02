@@ -227,7 +227,7 @@ const Collection = ({ data }) => {
             </div>
           </div>
           <div className="right__sidebar">
-            <div className="flex justify-between sm:flex-col md:flex-row">
+            <div className="flex justify-between flex-col md:flex-row">
               <div className="sidebar__sort-by">
                 <p className="sort-by__title ">Sort By:</p>
                 <select

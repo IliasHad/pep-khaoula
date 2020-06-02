@@ -70,12 +70,18 @@ const Footer = () => {
             </h2>
             <nav className="list-none mb-10">
               <li>
-                <a className="text-gray-600 hover:text-gray-800">
+                <a
+                  href="tel:(212)-615626671"
+                  className="text-gray-600 hover:text-gray-800"
+                >
                   Tel: +212615626671
                 </a>
               </li>
               <li className="mt-2 ">
-                <a className="text-gray-600 hover:text-gray-800">
+                <a
+                  href="https://www.google.com/maps/place/Pepini%C3%A9re+Khaoula+%D9%85%D8%B3%D8%AA%D9%86%D8%A8%D8%AB+%D8%AE%D9%88%D9%84%D8%A9%E2%80%AD/@34.2140913,-6.6676767,15z/data=!4m2!3m1!1s0x0:0xc1cf87c929f6bbdb?sa=X&ved=2ahUKEwj43KOst-PpAhWvAGMBHSC0DIcQ_BIwE3oECBgQCA"
+                  className="text-gray-600 hover:text-gray-800"
+                >
                   Adresse: 10 Km Route De Rabat - Kénitra
                 </a>
               </li>
