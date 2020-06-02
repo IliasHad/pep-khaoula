@@ -9,11 +9,13 @@ const LineItem = (props) => {
     store: { client, checkout },
   } = useContext(StoreContext);
 
+  console.log(line_item);
   const variantImage = line_item.variant.image ? (
     <img
       src={line_item.variant.image.src}
       alt={`${line_item.title} product shot`}
-      width="200px"
+      width="100px"
+      height="100px"
     />
   ) : null;
 
@@ -28,7 +30,7 @@ const LineItem = (props) => {
   };
 
   return (
-    <div class="py-8 flex flex-wrap md:flex-no-wrap">
+    <div class="py-8 flex justify-between flex-wrap md:flex-no-wrap">
       <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
         {variantImage}
       </div>
@@ -37,25 +39,28 @@ const LineItem = (props) => {
           {line_item.title}
         </h2>
         <p class="leading-relaxed">{selectedOptions}</p>
-        <button
-          class="text-indigo-500 inline-flex items-center mt-4"
-          onClick={handleRemove}
-        >
-          Remove
-          <svg
-            class="w-4 h-4 ml-2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M5 12h14"></path>
-            <path d="M12 5l7 7-7 7"></path>
-          </svg>
-        </button>
       </div>
+
+      <p className="mx-10">{line_item.quantity} U</p>
+      <p className="mx-10">
+        {line_item.variant.price * line_item.quantity} MAD
+      </p>
+
+      <button class="text-indigo-500 inline-flex ml-12" onClick={handleRemove}>
+        Remove
+        <svg
+          class="w-4 h-4 ml-2"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M5 12h14"></path>
+          <path d="M12 5l7 7-7 7"></path>
+        </svg>
+      </button>
     </div>
   );
 };
