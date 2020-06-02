@@ -31,7 +31,8 @@
 
 .sidebar__header {
   display: grid;
-  grid-template-columns: repeat(2, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  justify-items: center;
 }
 .product__page {
   grid-gap: 2rem;

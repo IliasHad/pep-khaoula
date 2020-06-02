@@ -127,9 +127,9 @@ const Collection = ({ data }) => {
     <Layout>
       <Navigation links={data.dataJson.mainMenu} />
 
-      <section className="mx-24 md:pt-24">
+      <section className="lg:mx-24 mx-8  lg:pt-24">
         <div className="product__container">
-          <div className="left__sidebar">
+          <div className="left__sidebar hidden md:block">
             <div className="sidebar__part">
               <h2 className="sidebar__title">Categories</h2>
 
@@ -227,7 +227,7 @@ const Collection = ({ data }) => {
             </div>
           </div>
           <div className="right__sidebar">
-            <div className="sidebar__header">
+            <div className="flex justify-between sm:flex-col md:flex-row">
               <div className="sidebar__sort-by">
                 <p className="sort-by__title ">Sort By:</p>
                 <select
@@ -242,7 +242,10 @@ const Collection = ({ data }) => {
                 </select>
               </div>
 
-              <p className="sidebar__results-lenght text-gray-600">
+              <p
+                className="sidebar__results-lenght text-gray-600 mt-5
+              "
+              >
                 Showing {products.length} of products
               </p>
             </div>
@@ -256,7 +259,8 @@ const Collection = ({ data }) => {
                     featuredImage={product.images[0]}
                     handle={product.handle}
                     title={product.title}
-                    price={product.priceRange}
+                    minVariantPrice={product.priceRange.minVariantPrice}
+                    variant={product.variants[0]}
                   />
                 ))}
             </div>
@@ -298,12 +302,23 @@ export const query = graphql`
           options {
             name
           }
+          variants {
+            id
+            title
+            price
+            availableForSale
+            shopifyId
+            selectedOptions {
+              name
+              value
+            }
+          }
           priceRange {
-            maxVariantPrice {
+            minVariantPrice {
               amount
               currencyCode
             }
-            minVariantPrice {
+            maxVariantPrice {
               amount
               currencyCode
             }
