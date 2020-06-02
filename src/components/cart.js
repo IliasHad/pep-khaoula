@@ -11,7 +11,7 @@ const Cart = () => {
 
   const handleCheckout = () => {
     window.open(
-      `https://api.whatsapp.com/send?phone=+212633954998&text=${checkout.lineItems.map(
+      `https://api.whatsapp.com/send?phone=+212615626671&text=${checkout.lineItems.map(
         (el, index) =>
           `${index === 0 ? "" : "%0A"}   ${el.quantity} - ${
             el.title
@@ -83,7 +83,6 @@ const Cart = () => {
                 onClick={handleCheckout}
                 className="inline-block ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
               >
-              
                 Confirmer Via Whatsapp
               </a>
             </div>
