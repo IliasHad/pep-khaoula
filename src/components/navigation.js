@@ -65,13 +65,13 @@ const Navigation = ({ links, children }) => {
                   {link.name}
                 </Link>
               ))}
+              <Link
+                to="/cart"
+                className="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0"
+              >
+                Cart 🛍 {hasItems && <span className="ml-3">{quantity}</span>}
+              </Link>
             </div>
-            <Link
-              to="/cart"
-              className="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0"
-            >
-              Cart 🛍 {hasItems && <span className="ml-3">{quantity}</span>}
-            </Link>
           </nav>
         </div>
 
@@ -119,6 +119,13 @@ const Navigation = ({ links, children }) => {
                       {link.name}
                     </Link>
                   ))}
+                  <Link
+                    to="/cart"
+                    className="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0"
+                  >
+                    Cart 🛍{" "}
+                    {hasItems && <span className="ml-3">{quantity}</span>}
+                  </Link>
                 </div>
               </div>
             </div>
