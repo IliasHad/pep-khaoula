@@ -33,12 +33,23 @@ const ProductCards = () => {
                 options {
                   name
                 }
+                variants {
+                  id
+                  title
+                  price
+                  availableForSale
+                  shopifyId
+                  selectedOptions {
+                    name
+                    value
+                  }
+                }
                 priceRange {
-                  maxVariantPrice {
+                  minVariantPrice {
                     amount
                     currencyCode
                   }
-                  minVariantPrice {
+                  maxVariantPrice {
                     amount
                     currencyCode
                   }
@@ -63,13 +74,12 @@ const ProductCards = () => {
                       />
                       <div className="text-xl mb-2 pt-3">{node.title}</div>
                       <div className="text-sm mb-2 pt-2">
-                        {" "}
-                        {node.priceRange.minVariantPrice.amount -
-                          node.priceRange.maxVariantPrice.amount ===
-                        0
-                          ? node.priceRange.maxVariantPrice.amount
-                          : `${node.priceRange.minVariantPrice.amount} - ${node.priceRange.maxVariantPrice.amount}`}{" "}
-                        {node.priceRange.maxVariantPrice.currencyCode}
+                        {Intl.NumberFormat(undefined, {
+                          currency:
+                            node.priceRange.minVariantPrice.currencyCode,
+                          minimumFractionDigits: 2,
+                          style: "currency",
+                        }).format(node.variants[0].price)}
                       </div>
                     </Link>
                   </div>
