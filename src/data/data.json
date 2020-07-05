@@ -4,10 +4,6 @@
   "heroImage": "../images/abigail-lynn-9y8c_YDUrYA-unsplash.jpg",
   "mainMenu": [
     {
-      "name": "New Menu",
-      "id": "u2a5jwqdt"
-    },
-    {
       "name": "Accueil",
       "path": "/"
     },
@@ -19,6 +15,11 @@
       "name": "Contactez Nous",
       "id": "s7dheld57",
       "path": "/contact"
+    },
+    {
+      "name": "Nos Collections",
+      "id": "u2a5jwqdt",
+      "path": "/collection"
     }
   ],
   "cta": {
