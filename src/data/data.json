@@ -33,5 +33,16 @@
   "about": {
     "image": "../images/cole-keister-oumE4KeypcM-unsplash.jpg",
     "description": "Pépinière Khaoula est l'une des meilleures pépinières à Kénitra et nous protègent notre réputation pour plus de 20 ans\n\n"
-  }
+  },
+  "gallery": [
+    {
+      "name": "New Menu",
+      "id": "sry4y2iss"
+    },
+    {
+      "name": "New Menu",
+      "id": "rwd0d8v2d",
+      "image": "../images/mostafa-meraji-CqDiMYMsPMU-unsplash.jpg"
+    }
+  ]
 }
