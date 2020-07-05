@@ -45,9 +45,6 @@ function IndexPage(props) {
       </section>
 
       <section className="m-10">
-        <Gallery />
-      </section>
-      <section className="m-10">
         <CTA
           secondaryCta={data.cta.secondaryCta}
           secondaryCtaHandle={data.cta.secondaryCta_handle}
@@ -193,6 +190,43 @@ const FormOptions = {
       label: "CTA Text",
       name: "rawJson.cta.text",
       component: "text",
+    },
+    {
+      label: "Gallery",
+      name: "rawJson.gallery",
+      component: "group-list",
+      description: "Gallery List",
+      defaultItem: () => ({
+        name: "New Menu",
+        id: Math.random()
+          .toString(36)
+          .substr(2, 9),
+      }),
+      itemProps: (item) => ({
+        key: item.id,
+        label: item.name,
+      }),
+      fields: [
+        {
+          name: "image",
+          label: "Gallery  Image",
+          description: "Choose your supporting copy for the About Us section",
+          component: "image",
+
+          previewSrc: (formValues) => {
+            const path = formValues.jsonNode.gallery.image;
+            const gatsbyImageNode = get(formValues, path);
+            if (gatsbyImageNode)
+              return formValues.jsonNode.gallery.image.childImageSharp.fluid
+                .src;
+          },
+          uploadDir: () => {
+            return "src/images/";
+          },
+
+          parse: (filename) => `../images/${filename}`,
+        },
+      ],
     },
   ],
 };
