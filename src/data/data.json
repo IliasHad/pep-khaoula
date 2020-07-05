@@ -12,14 +12,14 @@
       "path": "/product"
     },
     {
-      "name": "Contactez Nous",
-      "id": "s7dheld57",
-      "path": "/contact"
-    },
-    {
       "name": "Nos Collections",
       "id": "u2a5jwqdt",
       "path": "/collection"
+    },
+    {
+      "name": "Contactez Nous",
+      "id": "s7dheld57",
+      "path": "/contact"
     }
   ],
   "cta": {
