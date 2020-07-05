@@ -31,9 +31,9 @@ const CollectionPage = ({ data }) => {
                     <Img
                       style={{ position: "absolute" }}
                       className="absolute inset-0 w-full h-full object-cover object-center"
-                      fixed={
+                      fluid={
                         collection.products[0].images[0].localFile
-                          .childImageSharp.fixed
+                          .childImageSharp.fluid
                       }
                       alt=""
                     />
@@ -83,8 +83,8 @@ export const query = graphql`
           images {
             localFile {
               childImageSharp {
-                fixed(width: 300, height: 200, quality: 100) {
-                  ...GatsbyImageSharpFixed
+                fluid(maxWidth: 150, quality: 100) {
+                  ...GatsbyImageSharpFluid
                 }
               }
             }

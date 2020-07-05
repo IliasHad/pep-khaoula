@@ -15,6 +15,7 @@ module.exports = {
         name: "images",
       },
     },
+    "gatsby-plugin-use-query-params",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
     `gatsby-plugin-react-helmet`,

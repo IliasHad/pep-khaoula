@@ -7,6 +7,7 @@ import StoreContext from "../context/StoreContext";
 
 const ProductForm = ({ product }) => {
   const {
+    title,
     options,
     variants,
     variants: [initialVariant],
@@ -14,6 +15,9 @@ const ProductForm = ({ product }) => {
   } = product;
   const [variant, setVariant] = useState({ ...initialVariant });
   const [quantity, setQuantity] = useState(1);
+  const [added, setAdded] = useState(false);
+
+  console.log(product);
   const {
     addVariantToCart,
     store: { client, adding },
@@ -61,12 +65,15 @@ const ProductForm = ({ product }) => {
     );
 
     setVariant({ ...selectedVariant });
+
+    console.log(variant.title);
   };
 
   const handleAddToCart = (e) => {
     setAddedToCartMessage("Adding ..");
     addVariantToCart(productVariant.shopifyId, quantity);
     setAddedToCartMessage("Voir Le Panier");
+    setAdded();
   };
 
   /* 
@@ -145,14 +152,19 @@ const ProductForm = ({ product }) => {
           {price}
         </span>
 
-        <button
+        <a
+          href={`https://api.whatsapp.com/send?phone=+212633954998&text=${`${title}   ${
+            variant.title === "Default Title" ? "" : variant.title
+          }  ${price}`} 
+              `}
+          target="__blank"
           type="submit"
           disabled={!available || adding}
           onClick={handleAddToCart}
           className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
         >
-          {addedToCartMessage}
-        </button>
+          Commander Via Whatsapp
+        </a>
       </div>
     </>
   );

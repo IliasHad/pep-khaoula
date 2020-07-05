@@ -4,8 +4,8 @@ import Navigation from "../components/navigation";
 import { Link, StaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
 import { ProductCard } from "../components/productCard";
-import { useLocation } from "@reach/router";
-import queryString from "query-string";
+import { useQueryParam, NumberParam, StringParam } from "use-query-params";
+
 const Collection = ({ data }) => {
   const minPriceRef = useRef(0);
   const maxPriceRef = useRef(0);
@@ -14,27 +14,10 @@ const Collection = ({ data }) => {
   const [categories, setCategories] = useState([]);
   const [sortBy, setSortBy] = useState("");
 
-  const getSelectedCollection = (query) => {
-    const fallback = "all";
-
-    if (query) {
-      const queriedTheme = queryString.parse(query);
-      const { collection } = queriedTheme;
-
-      // Ensure a valid expected value is passed
-      return collection;
-    }
-
-    return fallback;
-  };
-
-  const location = useLocation();
-  const defaultCollection =
-    (location.search && getSelectedCollection(location.search)) || "all";
-  const [category, setCategory] = useState(defaultCollection);
+  const [category, setCategory] = useQueryParam("collection", StringParam);
 
   const sortedProductByCategory = (products) =>
-    category === "all"
+    category === "all" || category === undefined
       ? products
       : products.filter((node) => node.category === category);
 
