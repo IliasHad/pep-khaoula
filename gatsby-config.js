@@ -3,9 +3,9 @@ require("dotenv").config();
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Tailwind`,
-    description: `Gatsby starter styled with Tailwind with Plant.js`,
-    author: `@taylorbryant`,
+    title: `Pépinière Khaoula `,
+    description: `Pépinière Khaoula est l'une des meilleures pépinières à Kénitra et nous protègent notre réputation pour plus de 20 ans avec de nombreuses variantes de plantes de différentes tailles.    `,
+    author: `@iliashaddad`,
   },
   plugins: [
     {
