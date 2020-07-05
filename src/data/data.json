@@ -4,7 +4,11 @@
   "heroImage": "../images/abigail-lynn-9y8c_YDUrYA-unsplash.jpg",
   "mainMenu": [
     {
-      "name": "Home",
+      "name": "New Menu",
+      "id": "u2a5jwqdt"
+    },
+    {
+      "name": "Accueil",
       "path": "/"
     },
     {
