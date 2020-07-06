@@ -14,8 +14,7 @@ const Collection = ({ data }) => {
   const [categories, setCategories] = useState([]);
   const [sortBy, setSortBy] = useState("");
 
-  const [category, setCategory] = useState("all");
-  setCategory(useQueryParam("collection", StringParam));
+  const [category, setCategory] = useQueryParam("collection", StringParam);
   const sortedProductByCategory = (products) =>
     category === "all" || category === undefined
       ? products
@@ -40,7 +39,9 @@ const Collection = ({ data }) => {
 
     setProducts(filtered);
 
-    document.title = `Pep Khaoula - ${category === "all" ? "Tout" : category} `;
+    document.title = `Pep Khaoula - ${
+      category === "all" || category === undefined ? "Tout" : category
+    } `;
   }, [category]);
 
   useEffect(() => {
