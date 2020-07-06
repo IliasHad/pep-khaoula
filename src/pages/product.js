@@ -273,7 +273,7 @@ export const query = graphql`
           images {
             localFile {
               childImageSharp {
-                fixed(height: 300, width: 300, quality: 100) {
+                fixed(height: 250, width: 250, quality: 100) {
                   ...GatsbyImageSharpFixed
                 }
               }
