@@ -17,7 +17,6 @@ const ProductForm = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
 
-  console.log(product);
   const {
     addVariantToCart,
     store: { client, adding },
@@ -65,8 +64,6 @@ const ProductForm = ({ product }) => {
     );
 
     setVariant({ ...selectedVariant });
-
-    console.log(variant.title);
   };
 
   const handleAddToCart = (e) => {

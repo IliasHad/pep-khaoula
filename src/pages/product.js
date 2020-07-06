@@ -25,7 +25,6 @@ const Collection = ({ data }) => {
 
     setCategories(Array.from(new Set(productsData.map((el) => el.category))));
     setProducts([]);
-    console.log(category);
     const filtered = sortedProductByCategory(productsData);
 
     setProducts(filtered);

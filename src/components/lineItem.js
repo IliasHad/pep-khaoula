@@ -9,7 +9,6 @@ const LineItem = (props) => {
     store: { client, checkout },
   } = useContext(StoreContext);
 
-  console.log(line_item);
   const variantImage = line_item.variant.image ? (
     <img
       src={line_item.variant.image.src}
