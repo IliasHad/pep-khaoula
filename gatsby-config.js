@@ -71,6 +71,8 @@ module.exports = {
           "gatsby-transformer-json",
           "gatsby-tinacms-git",
         ],
+                enabled: process.env.NODE_ENV !== "production",
+
         sidebar: {
           hidden: process.env.NODE_ENV !== "production",
           position: "displace",
