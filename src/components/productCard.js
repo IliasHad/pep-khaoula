@@ -17,11 +17,7 @@ export const ProductCard = ({
   }).format(variant.price);
 
   return (
-    <div
-      className="max-w-full rounded 
-  "
-      key={id}
-    >
+    <div key={id}>
       <div className="px-6 py-4">
         <Link to={`/product/${handle}`}>
           <Img fixed={featuredImage.localFile.childImageSharp.fixed} alt="" />
