@@ -34,7 +34,7 @@
     "react-dom": "16.13.0",
     "react-helmet": "5.2.1",
     "shopify-buy": "^2.10.0",
-    "styled-components": "^5.1.1",
+    "styled-components": "^5.1.0",
     "use-query-params": "^1.1.5"
   },
   "keywords": [
@@ -51,7 +51,7 @@
     "fix:lint": "eslint --ext .jsx --ext .js . --fix",
     "fix:prettier": "prettier --write \"**/*.{css,js,jsx,json,md}\"",
     "fix": "npm run fix:lint && npm run fix:prettier",
-    "build": "TINA_DISABLED=true gatsby build",
+    "build": "gatsby build",
     "develop": "TINA_GIT_DEBOUNCE_MS=5000 gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
