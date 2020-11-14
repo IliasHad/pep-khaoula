@@ -22,7 +22,7 @@ const ProductCards = () => {
                   localFile {
                     childImageSharp {
                       fixed(height: 300, width: 300, quality: 100) {
-                        ...GatsbyImageSharpFluid_withWebp_noBase64
+                        ...GatsbyImageSharpFixed_withWebp_noBase64
                       }
                     }
                   }

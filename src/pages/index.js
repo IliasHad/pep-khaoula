@@ -259,7 +259,7 @@ export const query = graphql`
             cropFocus: CENTER
             fit: COVER
           ) {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
+            ...GatsbyImageSharpFixed_withWebp_noBase64
           }
         }
       }
@@ -271,7 +271,7 @@ export const query = graphql`
               src
             }
             fixed(height: 700, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
+              ...GatsbyImageSharpFixed_withWebp_noBase64
             }
           }
         }
