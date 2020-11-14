@@ -90,14 +90,14 @@ const Collection = ({ data }) => {
   };
 
   const sortByLowest = (products) =>
-    products.sort(function(a, b) {
+    products.sort(function (a, b) {
       return (
         a.priceRange.minVariantPrice.amount -
         b.priceRange.minVariantPrice.amount
       );
     });
   const sortByHighest = (products) =>
-    products.sort(function(a, b) {
+    products.sort(function (a, b) {
       return (
         b.priceRange.minVariantPrice.amount -
         a.priceRange.minVariantPrice.amount
@@ -274,7 +274,7 @@ export const query = graphql`
             localFile {
               childImageSharp {
                 fixed(height: 250, width: 250, quality: 100) {
-                  ...GatsbyImageSharpFixed
+                  ...GatsbyImageSharpFluid_withWebp_noBase64
                 }
               }
             }

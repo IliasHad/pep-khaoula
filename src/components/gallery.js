@@ -24,7 +24,7 @@ export const Gallery = ({ data }) => (
             ) {
               childImageSharp {
                 fixed(height: 503, width: 303, quality: 100) {
-                  ...GatsbyImageSharpFixed
+                  ...GatsbyImageSharpFluid_withWebp_noBase64
                 }
               }
             }
@@ -34,7 +34,7 @@ export const Gallery = ({ data }) => (
             ) {
               childImageSharp {
                 fixed(height: 503, width: 303, quality: 100) {
-                  ...GatsbyImageSharpFixed
+                  ...GatsbyImageSharpFluid_withWebp_noBase64
                 }
               }
             }
@@ -44,7 +44,7 @@ export const Gallery = ({ data }) => (
             ) {
               childImageSharp {
                 fixed(height: 503, width: 303, quality: 100) {
-                  ...GatsbyImageSharpFixed
+                  ...GatsbyImageSharpFluid_withWebp_noBase64
                 }
               }
             }
@@ -54,7 +54,7 @@ export const Gallery = ({ data }) => (
             ) {
               childImageSharp {
                 fixed(height: 503, width: 303, quality: 100) {
-                  ...GatsbyImageSharpFixed
+                  ...GatsbyImageSharpFluid_withWebp_noBase64
                 }
               }
             }
@@ -63,7 +63,7 @@ export const Gallery = ({ data }) => (
             ) {
               childImageSharp {
                 fixed(height: 602, width: 361, quality: 100) {
-                  ...GatsbyImageSharpFixed
+                  ...GatsbyImageSharpFluid_withWebp_noBase64
                 }
               }
             }
@@ -72,7 +72,7 @@ export const Gallery = ({ data }) => (
             ) {
               childImageSharp {
                 fixed(height: 600, width: 360, quality: 100) {
-                  ...GatsbyImageSharpFixed
+                  ...GatsbyImageSharpFluid_withWebp_noBase64
                 }
               }
             }

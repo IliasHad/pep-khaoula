@@ -100,9 +100,7 @@ const FormOptions = {
       description: "Menu List",
       defaultItem: () => ({
         name: "New Menu",
-        id: Math.random()
-          .toString(36)
-          .substr(2, 9),
+        id: Math.random().toString(36).substr(2, 9),
       }),
       itemProps: (item) => ({
         key: item.id,
@@ -198,9 +196,7 @@ const FormOptions = {
       description: "Gallery List",
       defaultItem: () => ({
         name: "New Menu",
-        id: Math.random()
-          .toString(36)
-          .substr(2, 9),
+        id: Math.random().toString(36).substr(2, 9),
       }),
       itemProps: (item) => ({
         key: item.id,
@@ -263,7 +259,7 @@ export const query = graphql`
             cropFocus: CENTER
             fit: COVER
           ) {
-            ...GatsbyImageSharpFixed
+            ...GatsbyImageSharpFluid_withWebp_noBase64
           }
         }
       }
@@ -275,7 +271,7 @@ export const query = graphql`
               src
             }
             fixed(height: 700, quality: 100) {
-              ...GatsbyImageSharpFixed
+              ...GatsbyImageSharpFluid_withWebp_noBase64
             }
           }
         }
